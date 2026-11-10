@@ -108,12 +108,40 @@ namespace Filmek
 
         private void csak_cimek(object sender, RoutedEventArgs e)
         {
+            List<string> cimek = new List<string>();
 
+
+            foreach (var item in filmek)
+            {
+                cimek.Add(item.Cim);
+            }
+
+
+            dgFilm.AutoGenerateColumns = false;
+            dgFilm.Columns.Clear();
+
+
+            DataGridTextColumn oszlop = new DataGridTextColumn();
+
+
+            oszlop.Header = "Film címe";
+            oszlop.Binding = new Binding();
+
+
+            dgFilm.Columns.Add(oszlop);
+
+
+            dgFilm.ItemsSource = cimek;
         }
 
         private void rendezes_cim(object sender, RoutedEventArgs e)
         {
+            List<Film> cimSzerint = filmek
+                                        .OrderBy(x => x.Cim)
+                                        .ToList();
 
+
+            dgFilm.ItemsSource = cimSzerint;
         }
     }
 }
