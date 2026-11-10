@@ -90,7 +90,20 @@ namespace Filmek
 
         private void csakScifi(object sender, RoutedEventArgs e)
         {
-            
+            List<Film> scifi = new List<Film>();
+
+            foreach (var item in filmek)
+            {
+                if (item.Mufaj == "sci-fi".ToLower())
+                {
+                    scifi.Add(item);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            dgFilm.ItemsSource = scifi;
         }
 
         private void csak_cimek(object sender, RoutedEventArgs e)
